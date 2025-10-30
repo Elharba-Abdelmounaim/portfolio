@@ -1,47 +1,60 @@
+/* متغيرات CSS للألوان والقيم الشائعة لسهولة التعديل */
+:root {
+  --primary-bg: #252954;
+  --secondary-bg: #1d1b2c;
+  --accent-color: #9b51e0;
+  --accent-hover: #7a3dcd;
+  --text-color: #ffffff;
+  --text-muted: #d7d7d7;
+  --highlight: #A7e0e9;
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+}
 
 body {
   margin: 0;
-  background-color: #252954;
+  background-color: var(--primary-bg);
   font-family: "Poppins", sans-serif;
-  color: white;
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
+  line-height: 1.6; /* تحسين القراءة */
 }
 
 .landingpage {
   width: 90%;
   max-width: 1200px;
-  padding: 50px;
-  margin-top: 80px; 
+  padding: 50px 20px; /* تقليل الحشو الجانبي قليلاً */
+  margin-top: 80px;
 }
-
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #1d1b2c;
+  background-color: var(--secondary-bg);
   z-index: 1000;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل للتمييز */
 }
 
 .navlogo {
   font-size: 32px;
   font-weight: 700;
-  background: linear-gradient(93.51deg, #9b51e0 2.84%, #3081ed 99.18%);
+  background: linear-gradient(93.51deg, var(--accent-color) 2.84%, #3081ed 99.18%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding-left: 60px; 
-  padding-right: 60px; 
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .navlogo-img {
-  height: 60px; 
+  height: 60px;
   width: auto;
   display: block;
   padding-left: 30px;
@@ -49,27 +62,26 @@ body {
 }
 
 .navlinkwrap {
-  color: #7a3dcd;
   display: flex;
   gap: 30px;
+  padding-right: 60px; /* توازن مع اليسار */
 }
 
 .navlink {
   color: #bcbcbc;
   font-size: 14px;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: color var(--transition);
 }
 
 .navlink:hover {
-  color: #ff7f50; 
+  color: #ff7f50;
 }
-
 
 .box {
   display: flex;
   flex-direction: row;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
   gap: 40px;
   margin: 40px auto;
@@ -78,7 +90,6 @@ body {
 }
 
 .text-box {
-  order: 1;
   flex: 1;
 }
 
@@ -87,33 +98,32 @@ body {
   height: 400px;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-  order: 2;
+  transition: transform var(--transition);
+  will-change: transform; /* تحسين الأداء للانيميشن */
 }
 
 .profile-img:hover {
   transform: scale(1.05);
 }
 
-
 .infobox-boldtext {
   font-size: 36px;
   font-weight: 600;
+  margin-bottom: 20px; /* إضافة هامش سفلي */
 }
 
 .infobox-slimtext {
   font-size: 20px;
-  color: #d7d7d7;
+  color: var(--text-muted);
 }
 
 .infobox-slimtext u {
-  color: #A7e0e9;
+  color: var(--highlight);
 }
 
 .infobox-slimtext b {
   color: #e5eec1;
 }
-
 
 .projects {
   margin-top: 50px;
@@ -123,6 +133,7 @@ body {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 20px;
+  text-align: center; /* توسيط العناوين */
 }
 
 .project-grid {
@@ -132,33 +143,39 @@ body {
 }
 
 .project-item {
-  background-color: #1d1b2c;
-  padding: 17px;
-  border-radius: 14px;
+  background-color: var(--secondary-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* إضافة ظل للعمق */
+  transition: transform var(--transition);
+  will-change: transform;
+}
+
+.project-item:hover {
+  transform: translateY(-5px); /* تأثير رفع عند التمرير */
 }
 
 .project-img {
-  display: flex;
   width: 100%;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition);
 }
 
 .project-info p {
-  margin: 10px;
+  margin: 10px 0;
 }
-
 
 .skills-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* أكثر مرونة */
   gap: 15px;
-  background: #1d1b2c;
+  background: var(--secondary-bg);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   max-width: 1200px;
   margin: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .skill-bar {
@@ -168,19 +185,14 @@ body {
   background: #3a3a4f;
   padding: 10px;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 500;
-  transition: background 0.3s ease;
+  transition: background var(--transition);
 }
 
 .skill-bar:hover {
   background: #4a4a5f;
-}
-
-.skill-bar i {
-  font-size: 20px;
-  color: #c8ff00;
 }
 
 .skill-bar img {
@@ -189,10 +201,9 @@ body {
 }
 
 .rating i {
-  color: #9b51e0;
+  color: var(--accent-color);
   margin-left: 2px;
 }
-
 
 .container {
   max-width: 1000px;
@@ -207,30 +218,30 @@ h2 {
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 40px;
-  color: #9b51e0;
+  color: var(--accent-color);
 }
 
 .highlight {
   color: #007BFF;
 }
 
-
 .section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;
-  
 }
 
 .the-box {
   background: #3a3a4f;
-  color: white;
+  color: var(--text-color);
   border-left: 5px solid #254bb4;
   padding: 25px 20px;
   flex: 1 1 45%;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  will-change: transform;
 }
 
 .the-box:hover {
@@ -267,13 +278,11 @@ h2 {
   color: #c3b9b9;
 }
 
-
 .contact-section {
   margin-bottom: 20px;
   background-color: #2a2a3a;
   padding: 20px;
-  gap: 15px;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 1200px;
   margin: auto;
@@ -282,7 +291,7 @@ h2 {
 .contact-section h2 {
   text-align: center;
   font-size: 32px;
-  color: #9b51e0;
+  color: var(--accent-color);
   margin-bottom: 30px;
 }
 
@@ -301,14 +310,14 @@ h2 {
 }
 
 .contact-details p a {
-  color: #9b51e0;
+  color: var(--accent-color);
   text-decoration: none;
+  transition: text-decoration var(--transition);
 }
 
 .contact-details p a:hover {
   text-decoration: underline;
 }
-
 
 .contact-form {
   display: grid;
@@ -325,17 +334,17 @@ h2 {
   background-color: #3a3a4f;
   border: 1px solid #444;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   font-size: 16px;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  transition: border-color var(--transition);
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: #9b51e0;
+  border-color: var(--accent-color);
   outline: none;
 }
 
@@ -345,38 +354,89 @@ h2 {
 }
 
 .contact-form button {
-  background-color: #9b51e0;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   font-size: 18px;
   padding: 15px 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition);
+  grid-column: span 2; /* يمتد على عمودين */
 }
 
 .contact-form button:hover {
-  background-color: #7a3dcd;
+  background-color: var(--accent-hover);
 }
 
 .button {
-    background: linear-gradient(135deg, #3a86ff, #4361ee);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 15px;
+  background: linear-gradient(135deg, #3a86ff, #4361ee);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
 }
 
 .button:hover {
-    background: linear-gradient(135deg, #4361ee, #3a86ff);
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #4361ee, #3a86ff);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
- 
+
+/* Media Queries للاستجابة على الأجهزة المحمولة */
+@media (max-width: 768px) {
+  .landingpage {
+    padding: 20px 10px;
+  }
+  .navbar {
+    padding: 10px 0;
+  }
+  .navlogo, .navlinkwrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .box {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .profile-img {
+    width: 250px;
+    height: 250px;
+  }
+  .skills-container {
+    grid-template-columns: 1fr; /* عمود واحد على المحمول */
+    padding: 15px;
+  }
+  .section {
+    flex-direction: column;
+  }
+  .contact-form {
+    grid-template-columns: 1fr; /* عمود واحد */
+  }
+  .contact-form button {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .infobox-boldtext {
+    font-size: 28px;
+  }
+  .infobox-slimtext {
+    font-size: 16px;
+  }
+  .titlebold {
+    font-size: 24px;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
